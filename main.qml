@@ -17,7 +17,6 @@ WaylandCompositor {
             width: 1920
             height: 1080
             color: "#004f00"
-            //flags: Qt.FramelessWindowHint
             visible: true
             Image {
                 id: backgroundAGL
@@ -305,6 +304,8 @@ WaylandCompositor {
     }
 
     IviApplication {
+        property int defaultAppIviSurfaceIDpathcounter : 2010
+
         onIviSurfaceCreated: (iviSurface) =>  {
             var surfaceArea;
             var validValue = true;
@@ -327,6 +328,23 @@ WaylandCompositor {
                         "shellSurface": iviSurface,
                         z: 10
                     } );
+            }
+
+            if (iviSurface.iviId  === defaultAppIviSurfaceIDpathcounter) {
+                if (defaultAppIviSurfaceIDpathcounter === 2010) {
+                    mainScreenWindow.hideAppList();
+                    appLayer2010.showApp();
+                } else if (defaultAppIviSurfaceIDpathcounter === 2011) {
+                    mainScreenWindow.hideAppList();
+                    appLayer2011.showApp();
+                } else if (defaultAppIviSurfaceIDpathcounter === 2012) {
+                    mainScreenWindow.hideAppList();
+                    appLayer2012.showApp();
+                } else if (defaultAppIviSurfaceIDpathcounter === 2013) {
+                    mainScreenWindow.hideAppList();
+                    appLayer2013.showApp();
+                }
+
             }
         }
     }
